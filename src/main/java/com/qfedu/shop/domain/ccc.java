@@ -2,11 +2,11 @@ package com.qfedu.shop.domain;
 
 /**
  * 描述:
- * ss
+ * sdsd
  *
  * @outhor 绅士桑
- * @create 2018-10-15 16:57
+ * @create 2018-10-15 17:02
  */
-public class bb {
+public class ccc {
 
 }
