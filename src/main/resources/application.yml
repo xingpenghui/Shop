@@ -1,12 +1,12 @@
-#Êı¾İ¿â
+#æ•°æ®åº“
 spring:
-datasource:
-type: com.alibaba.druid.pool.DruidDataSource
-driver-class-name: com.mysql.jdbc.Driver
-url: jdbc:mysql://localhost:3306/db_shop?useSSL=false
-username: root
-password: 123456
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_shop?useSSL=false
+    username: root
+    password: 123456
 
-#·şÎñÆ÷ÉèÖÃ
+#æœåŠ¡å™¨è®¾ç½®
 server:
-port: 8080
+  port: 8080

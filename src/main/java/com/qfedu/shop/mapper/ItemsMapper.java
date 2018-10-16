@@ -3,16 +3,19 @@ package com.qfedu.shop.mapper;
 
 import com.qfedu.shop.domain.Items;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ItemsMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Items record);
+    int deleteById(Integer id);
 
-    int insertSelective(Items record);
+    int add(Items record);
 
-    Items selectByPrimaryKey(Integer id);
+    List<Items> findAll(String username);
 
-    int updateByPrimaryKeySelective(Items record);
+    List<Items> findByGname(Map<String,String> map);
 
-    int updateByPrimaryKey(Items record);
+    //Integer state,String username
+    List<Items> findByState(Map<String,String> map);
 }

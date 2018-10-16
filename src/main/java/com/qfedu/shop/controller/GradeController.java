@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GradeController {
 
-    //查询左菜单
+    /*//查询左菜单
     @GetMapping("gradelist.do")
     public List<MenuVo> menus(){
         User user= (User) SecurityUtils.getSubject().getSession().getAttribute("user");
         return userService.queryMenu(user.getId());
-    }
+    }*/
 
 }

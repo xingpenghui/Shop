@@ -1,18 +1,16 @@
 package com.qfedu.shop.mapper;
 
 
+import com.qfedu.shop.domain.Items;
 import com.qfedu.shop.domain.Orders;
+import java.util.List;
+import java.util.Map;
 
 public interface OrdersMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Orders record);
+    int deleteById(Integer id);
 
-    int insertSelective(Orders record);
+    int add(String username);
 
-    Orders selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Orders record);
-
-    int updateByPrimaryKey(Orders record);
+    int getId();
 }
