@@ -23,11 +23,11 @@ public interface OrderService {
     R deleteById(Integer id);
 
     /**
-     * 下单
-     * @param record
+     * 下单，一个单多个商品
+     * @param
      * @return
      */
-    R add(Items record);
+    R add(List<Items> list,String username);
 
     /**
      * 查看所有订单

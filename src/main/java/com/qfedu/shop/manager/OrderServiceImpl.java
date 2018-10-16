@@ -34,9 +34,8 @@ public class OrderServiceImpl implements OrderService {
         if(null == id) {
             throw new RuntimeException("订单ID为空无法删除");
         }
-
         try {
-            itemsMapper.deleteById(id);
+            itemsMapper.deleteByOId(id);
             ordersMapper.deleteById(id);
             return ResultUtil.setOK("订单删除成功");
         } catch (Exception e) {
@@ -48,12 +47,37 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public R add(Items record) {
-        return null;
+    public R add(List<Items> list,String username) {
+        if(null == list) {
+            throw new RuntimeException("订单为空无法添加");
+        }
+        try {
+            ordersMapper.add(username);
+
+            int oid = ordersMapper.getId();
+
+            for (Items item : list ) {
+                item.setOid(oid);
+                itemsMapper.add(item);
+            }
+
+            return ResultUtil.setOK("订单添加成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("订单删除失败");
+        }
+
     }
 
     @Override
     public List<Items> findAll(String username) {
+
+        if(username == null) {
+            throw new RuntimeException("请登录否则无法查订单");
+        }
+
+        List<Items> list = itemsMapper.findAll(username);
+
         return null;
     }
 

@@ -8,7 +8,8 @@ import java.util.Map;
 
 public interface ItemsMapper {
 
-    int deleteById(Integer id);
+    //oid是订单的id
+    int deleteByOId(Integer oid);
 
     int add(Items record);
 
