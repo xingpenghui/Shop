@@ -1,14 +1,12 @@
-#���ݿ�
+#数据库
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_shop?useSSL=false
     username: root
-    password: qi1995
+    password: 123456
 
-#����������
+#服务器设置
 server:
   port: 8080
-mybatis:
-  mapper-locations: mapper/*.xml

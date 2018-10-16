@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.mapper.ItemsMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.shop.domain.Items">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="goodsId" jdbcType="INTEGER" property="goodsid" />
+    <result column="createDate" jdbcType="DATE" property="createdate" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="total_price" jdbcType="DOUBLE" property="totalPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, oid, goodsId, createDate, count, price, state, total_price
+  </sql>
+
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from t_items
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.qfedu.shop.domain.Items">
+    insert into t_items (oid, goodsId, createDate, count, price, state, total_price) values
+    (#{oid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, now(), #{count,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE},
+    1, #{totalPrice,jdbcType=DOUBLE})
+  </insert>
+
+  <select id="findAll" parameterType="string" resultMap="com.qfedu.shop.domain.Items">
+    select ti.oid,ti.createDate,ti.count,ti.price,tg.gname,tg.img,ti.state,ti.total_price FROM t_goods tg
+    INNER JOIN t_items ti
+    ON tg.id=ti.goodsId
+    INNER JOIN t_orders tor
+    ON ti.oid=tor.id
+    where tor.username=#{username}
+  </select>
+
+  <select id="findByState" parameterType="map" resultMap="com.qfedu.shop.domain.Items">
+    select ti.oid,ti.createDate,ti.count,ti.price,tg.gname,tg.img,ti.state,ti.total_price FROM t_goods tg
+    INNER JOIN t_items ti
+    ON tg.id=ti.goodsId
+    INNER JOIN t_orders tor
+    ON ti.oid=tor.id
+    where tor.username=#{username} and ti.state=#{state}
+  </select>
+
+  <select id="findByGname" parameterType="map" resultMap="com.qfedu.shop.domain.Items">
+    select ti.oid,ti.createDate,ti.count,ti.price,tg.gname,tg.img,ti.state,ti.total_price FROM t_goods tg
+    INNER JOIN t_items ti
+    ON tg.id=ti.goodsId
+    INNER JOIN t_orders tor
+    ON ti.oid=tor.id
+    where tor.username=#{username} and tg.gname=#{gname}
+  </select>
+
+</mapper>
