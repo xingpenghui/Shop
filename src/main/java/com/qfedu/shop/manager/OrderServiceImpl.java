@@ -4,6 +4,7 @@ import com.qfedu.shop.domain.Items;
 import com.qfedu.shop.mapper.ItemsMapper;
 import com.qfedu.shop.mapper.OrdersMapper;
 import com.qfedu.shop.service.OrderService;
+import com.qfedu.shop.utils.ResultUtil;
 import com.qfedu.shop.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,13 @@ public class OrderServiceImpl implements OrderService {
         try {
             itemsMapper.deleteById(id);
             ordersMapper.deleteById(id);
+            return ResultUtil.setOK("订单删除成功");
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("订单删除失败");
+
         }
 
-
-        return null;
     }
 
     @Override
