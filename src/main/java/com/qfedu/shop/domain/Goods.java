@@ -15,6 +15,26 @@ public class Goods {
 
     private Integer parentid;
 
+    private Integer count;
+
+    private Double total_price;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Double getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(Double total_price) {
+        this.total_price = total_price;
+    }
+
     public Integer getId() {
         return id;
     }
